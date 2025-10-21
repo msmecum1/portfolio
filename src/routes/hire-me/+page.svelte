@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Header from '$lib/components/Header.svelte';
     import HireOption from '$lib/HireOption.svelte';
     let selectedOption: string = '';
     let message: string = '';
@@ -22,6 +23,7 @@
     }
 </script>
 
+<Header />
 <section class="container mx-auto px-4 py-8 max-w-6xl">
     <h1 class="text-4xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Hire Me</h1>
     <p class="mb-6 text-center text-gray-600 text-lg">Select how you'd like to work with me on your next project:</p>
@@ -62,7 +64,7 @@
                         id="jobDescription"
                         name="jobDescription"
                         bind:value={jobDescription}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                         rows="4"
                         placeholder="Describe the job role and responsibilities"
                     ></textarea>
@@ -74,7 +76,7 @@
                         name="startDate"
                         type="date"
                         bind:value={startDate}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                     />
                 </div>
                 <div>
@@ -84,7 +86,7 @@
                         name="payRange"
                         type="text"
                         bind:value={payRange}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                         placeholder="e.g., $80,000 - $120,000 per year"
                     />
                 </div>
@@ -95,7 +97,7 @@
                         name="pocName"
                         type="text"
                         bind:value={pocName}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                         placeholder="e.g., John Doe"
                     />
                 </div>
@@ -106,7 +108,7 @@
                         name="company"
                         type="text"
                         bind:value={company}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                         placeholder="e.g., Acme Corp"
                     />
                 </div>
@@ -117,7 +119,7 @@
                         name="phoneNumber"
                         type="tel"
                         bind:value={phoneNumber}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                         placeholder="e.g., +1 (123) 456-7890"
                     />
                 </div>
@@ -128,7 +130,7 @@
                         name="email"
                         type="email"
                         bind:value={email}
-                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3"
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 bg-white"
                         placeholder="e.g., john.doe@example.com"
                     />
                 </div>
