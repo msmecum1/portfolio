@@ -82,12 +82,5 @@
             <span class="text-xl">🚀</span>
             Hire Me Now
         </a>
-        <a 
-            href="/projects" 
-            class="flex items-center gap-2 px-6 py-3 bg-indigo-50 hover:bg-indigo-100 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg text-gray-700 hover:text-indigo-600"
-        >
-            <span class="text-xl">📂</span>
-            Projects
-        </a>
     </nav>
 </header>
