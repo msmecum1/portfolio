@@ -45,6 +45,7 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"cookie": "^0.7.0",
 		"portfolio": "file:"
 	}
 }
