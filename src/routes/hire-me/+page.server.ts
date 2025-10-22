@@ -1,5 +1,19 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.zoho.com',
+    port: 587,
+    secure: false, // Use TLS
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+// Basic email validation regex
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const actions: Actions = {
     default: async ({ request }) => {
@@ -9,6 +23,21 @@ export const actions: Actions = {
         if (typeof hireOption !== 'string' || !hireOption) {
             return fail(400, { error: 'Please select an option' });
         }
+
+        const sendEmail = async (subject: string, text: string) => {
+            try {
+                await transporter.sendMail({
+                    from: `MadMecs Portfolio <${process.env.EMAIL_USER}>`,
+                    to: process.env.EMAIL_TO,
+                    subject,
+                    text,
+                    html: `<h2>${subject}</h2><p>${text.replace(/\n/g, '<br>')}</p>`
+                });
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                return fail(500, { error: 'Failed to send inquiry. Please try again later.' });
+            }
+        };
 
         if (hireOption === 'full-time') {
             const ftJobDescription = data.get('ftJobDescription');
@@ -38,8 +67,15 @@ export const actions: Actions = {
                 return fail(400, { error: 'Please fill out all fields for a full-time position' });
             }
 
-            const message = `Full-Time Inquiry: Job Description: ${ftJobDescription}, Start Date: ${ftStartDate}, Pay Range: ${ftPayRange}, Contact: ${ftPocName} (${ftCompany}, ${ftPhoneNumber}, ${ftEmail})`;
-            return { message: `Thank you! ${message}. I'll get back to you soon.` };
+            if (!emailRegex.test(ftEmail)) {
+                return fail(400, { error: 'Please provide a valid email address' });
+            }
+
+            const message = `Full-Time Inquiry:\nJob Description: ${ftJobDescription}\nStart Date: ${ftStartDate}\nPay Range: ${ftPayRange}\nContact: ${ftPocName}\nCompany: ${ftCompany}\nPhone: ${ftPhoneNumber}\nEmail: ${ftEmail}`;
+            const emailResult = await sendEmail('New Full-Time Inquiry from MadMecs.org', message);
+            if (emailResult) return emailResult;
+
+            return { message: 'Thank you for your full-time hiring inquiry! I have received your details and will get back to you soon.' };
         }
 
         if (hireOption === 'part-time') {
@@ -70,8 +106,15 @@ export const actions: Actions = {
                 return fail(400, { error: 'Please fill out all fields for a part-time position' });
             }
 
-            const message = `Part-Time Inquiry: Job Description: ${ptJobDescription}, Start Date: ${ptStartDate}, Hourly Rate: ${ptHourlyRate}, Contact: ${ptPocName} (${ptCompany}, ${ptPhoneNumber}, ${ptEmail})`;
-            return { message: `Thank you! ${message}. I'll get back to you soon.` };
+            if (!emailRegex.test(ptEmail)) {
+                return fail(400, { error: 'Please provide a valid email address' });
+            }
+
+            const message = `Part-Time Inquiry:\nJob Description: ${ptJobDescription}\nStart Date: ${ptStartDate}\nHourly Rate: ${ptHourlyRate}\nContact: ${ptPocName}\nCompany: ${ptCompany}\nPhone: ${ptPhoneNumber}\nEmail: ${ptEmail}`;
+            const emailResult = await sendEmail('New Part-Time Inquiry from MadMecs.org', message);
+            if (emailResult) return emailResult;
+
+            return { message: 'Thank you for your part-time hiring inquiry! I have received your details and will get back to you soon.' };
         }
 
         if (hireOption === 'large-project') {
@@ -105,8 +148,15 @@ export const actions: Actions = {
                 return fail(400, { error: 'Please fill out all fields for a large project' });
             }
 
-            const message = `Large Project Inquiry: Project Description: ${lpProjectDescription}, Timeline: ${lpTimelineStart} to ${lpTimelineEnd}, Budget: ${lpBudget}, Contact: ${lpPocName} (${lpCompany}, ${lpPhoneNumber}, ${lpEmail})`;
-            return { message: `Thank you! ${message}. I'll get back to you soon.` };
+            if (!emailRegex.test(lpEmail)) {
+                return fail(400, { error: 'Please provide a valid email address' });
+            }
+
+            const message = `Large Project Inquiry:\nProject Description: ${lpProjectDescription}\nTimeline: ${lpTimelineStart} to ${lpTimelineEnd}\nBudget: ${lpBudget}\nContact: ${lpPocName}\nCompany: ${lpCompany}\nPhone: ${lpPhoneNumber}\nEmail: ${lpEmail}`;
+            const emailResult = await sendEmail('New Large Project Inquiry from MadMecs.org', message);
+            if (emailResult) return emailResult;
+
+            return { message: 'Thank you for your large project inquiry! I have received your details and will get back to you soon.' };
         }
 
         if (hireOption === 'small-project') {
@@ -137,8 +187,15 @@ export const actions: Actions = {
                 return fail(400, { error: 'Please fill out all fields for a small project' });
             }
 
-            const message = `Small Project Inquiry: Task Description: ${spTaskDescription}, Deadline: ${spDeadline}, Budget: ${spBudget}, Contact: ${spPocName} (${spCompany}, ${spPhoneNumber}, ${spEmail})`;
-            return { message: `Thank you! ${message}. I'll get back to you soon.` };
+            if (!emailRegex.test(spEmail)) {
+                return fail(400, { error: 'Please provide a valid email address' });
+            }
+
+            const message = `Small Project Inquiry:\nTask Description: ${spTaskDescription}\nDeadline: ${spDeadline}\nBudget: ${spBudget}\nContact: ${spPocName}\nCompany: ${spCompany}\nPhone: ${spPhoneNumber}\nEmail: ${spEmail}`;
+            const emailResult = await sendEmail('New Small Project Inquiry from MadMecs.org', message);
+            if (emailResult) return emailResult;
+
+            return { message: 'Thank you for your small project inquiry! I have received your details and will get back to you soon.' };
         }
 
         return { message: `Thank you for choosing to hire me as a ${hireOption}! I'll get back to you soon.` };
