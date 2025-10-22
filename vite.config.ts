@@ -2,6 +2,9 @@ import { svelteTesting } from '@testing-library/svelte/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import { config } from 'dotenv';
+
+config(); // Load .env file from project root
 
 export default defineConfig({
 	plugins: [sveltekit(), tailwindcss()],
