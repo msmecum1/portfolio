@@ -4,7 +4,7 @@
 </script>
 
 <Section title="Professional Summary">
-	<p class="text-lg leading-relaxed text-gray-700 text-justify">
+	<p class="text-justify text-lg leading-relaxed text-gray-700">
 		{professionalSummary}
 	</p>
 </Section>

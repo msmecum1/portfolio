@@ -10,19 +10,57 @@ export const contactInfo: ContactInfo = {
 export const skillCategories: SkillCategory[] = [
 	{
 		title: 'Languages & Frameworks',
-		skills: ['.NET Core', 'C#', 'Blazor WASM', 'Python', 'JavaScript', 'React', 'Vue', 'SvelteKit', 'Node.js', 'Java', 'R']
+		skills: [
+			'.NET Core',
+			'C#',
+			'Blazor WASM',
+			'Python',
+			'JavaScript',
+			'React',
+			'Vue',
+			'SvelteKit',
+			'Node.js',
+			'Java',
+			'R'
+		]
 	},
 	{
 		title: 'Cloud & Data Platforms',
-		skills: ['Databricks', 'Snowflake', 'Azure', 'AWS', 'SQL Server', 'PostgreSQL', 'Oracle RDBMS', 'Power BI', 'Firestore']
+		skills: [
+			'Databricks',
+			'Snowflake',
+			'Azure',
+			'AWS',
+			'SQL Server',
+			'PostgreSQL',
+			'Oracle RDBMS',
+			'Power BI',
+			'Firestore'
+		]
 	},
 	{
 		title: 'Enterprise & DevOps',
-		skills: ['REST APIs', 'Zero Trust Architecture', 'DevOps Pipelines', 'Git', 'Azure DevOps', 'Jira', 'Agile/Scrum', 'Systems Engineering']
+		skills: [
+			'REST APIs',
+			'Zero Trust Architecture',
+			'DevOps Pipelines',
+			'Git',
+			'Azure DevOps',
+			'Jira',
+			'Agile/Scrum',
+			'Systems Engineering'
+		]
 	},
 	{
 		title: 'Leadership & Management',
-		skills: ['Team Mentorship', 'Performance Evaluations', 'Vendor Oversight', 'Conflict Resolution', 'Change Management', 'Risk Planning']
+		skills: [
+			'Team Mentorship',
+			'Performance Evaluations',
+			'Vendor Oversight',
+			'Conflict Resolution',
+			'Change Management',
+			'Risk Planning'
+		]
 	}
 ];
 

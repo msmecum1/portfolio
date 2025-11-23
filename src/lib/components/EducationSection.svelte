@@ -4,15 +4,19 @@
 </script>
 
 <Section title="Education">
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-		{#each education as edu}
-			<div class="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-				<h3 class="text-xl font-semibold text-indigo-600 mb-2">{edu.degree}</h3>
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		{#each education as edu (edu.degree)}
+			<div
+				class="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+			>
+				<h3 class="mb-2 text-xl font-semibold text-indigo-600">{edu.degree}</h3>
 				{#if edu.fieldOfStudy}
-					<p class="text-lg text-gray-800 mb-2">{edu.fieldOfStudy}</p>
+					<p class="mb-2 text-lg text-gray-800">{edu.fieldOfStudy}</p>
 				{/if}
-				<p class="text-gray-700 mb-3">{edu.school}</p>
-				<span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full text-sm font-medium">
+				<p class="mb-3 text-gray-700">{edu.school}</p>
+				<span
+					class="rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 px-3 py-1 text-sm font-medium text-white"
+				>
 					{edu.graduationDate}
 				</span>
 			</div>
