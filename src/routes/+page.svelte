@@ -5,6 +5,7 @@
 	import ExperienceSection from '$lib/components/ExperienceSection.svelte';
 	import EducationSection from '$lib/components/EducationSection.svelte';
 	import ClearanceSection from '$lib/components/ClearanceSection.svelte';
+	import ProjectsSection from '$lib/components/ProjectsSection.svelte';
 </script>
 
 <svelte:head>
@@ -17,3 +18,4 @@
 <ExperienceSection />
 <EducationSection />
 <ClearanceSection />
+<ProjectsSection />
